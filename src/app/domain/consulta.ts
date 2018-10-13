@@ -4,7 +4,7 @@ export class Consulta {
     descricao: String;
     especialidade: String;
     diagnostico: String;
-    exame: String;
+    exame?: String;
     tratamento: String;
     sintomas: String;
     peso: Number;

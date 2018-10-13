@@ -1,5 +1,5 @@
 export class Usuario {
-    nome: String;
+    nome?: String;
     cpf: String;
     rg: Number;
     celular: String;

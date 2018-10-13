@@ -41,7 +41,7 @@ export class ConsultaListComponent implements OnInit {
       );
   }
 
-  private _filter(name: String): Consulta[] {
+  private _filter(name?: String): Consulta[] {
     if (name === undefined || name === null) {
       name = '';
     }
