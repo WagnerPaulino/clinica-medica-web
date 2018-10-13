@@ -3,7 +3,7 @@
     <mat-form-field class="full-width">
       <mat-select placeholder="Medico" [(ngModel)]="consulta.medico" name="medico">
           <mat-option [value]="null">
-              Nenhuma
+              Nenhum
             </mat-option>
         <mat-option *ngFor="let medico of medicos" [value]="medico">
           {{ medico.nome }}
