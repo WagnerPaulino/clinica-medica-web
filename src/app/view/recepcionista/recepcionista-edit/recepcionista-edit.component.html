@@ -1,0 +1,39 @@
+<form (ngSubmit)="salvar()">
+  <div class="container-form">
+    <mat-form-field>
+      <input matInput placeholder="Nome" [(ngModel)]="recepcionista.nome" name="nome">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="CPF" [(ngModel)]="recepcionista.cpf" name="cpf">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="RG" [(ngModel)]="recepcionista.rg" name="rg">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Celular" [(ngModel)]="recepcionista.celular" name="celular">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Contato residencial" [(ngModel)]="recepcionista.residencial" name="residencial">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Data de Nascimento" [(ngModel)]="recepcionista.dtNascimento" name="dtNascimento">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Sexo" [(ngModel)]="recepcionista.sexo" name="sexo">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Numero da Casa" [(ngModel)]="recepcionista.numCasa" name="numCasa">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Cidade" [(ngModel)]="recepcionista.cidade" name="cidade">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Bairro" [(ngModel)]="recepcionista.bairro" name="bairro">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="CEP" [(ngModel)]="recepcionista.cep" name="cep">
+    </mat-form-field>
+  </div>
+  <button class="max-button" mat-raised-button type="submit" color="primary">Salvar</button>
+  <button class="max-button" *ngIf="recepcionista.id" mat-raised-button type="button" (click)="excluir()" color="primary">Excluir</button>
+</form>

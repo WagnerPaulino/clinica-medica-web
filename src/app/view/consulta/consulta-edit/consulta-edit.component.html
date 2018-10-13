@@ -1,0 +1,53 @@
+<form (ngSubmit)="salvar()">
+  <div class="container-form">
+    <mat-form-field class="full-width">
+      <mat-select placeholder="Medico" [(ngModel)]="consulta.medico" name="medico">
+          <mat-option [value]="null">
+              Nenhuma
+            </mat-option>
+        <mat-option *ngFor="let medico of medicos" [value]="medico">
+          {{ medico.nome }}
+        </mat-option>
+      </mat-select>
+      <mat-hint>Medico reponsavel: {{consulta.medico?.nome}}</mat-hint>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Descricao" [(ngModel)]="consulta.descricao" name="descricao">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Especialidade" [(ngModel)]="consulta.especialidade" name="especialidade">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Diagnostico" [(ngModel)]="consulta.diagnostico" name="diagnostico">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Exame" [(ngModel)]="consulta.exame" name="exame">
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput placeholder="Tratamento" [(ngModel)]="consulta.tratamento" name="tratamento">
+      </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Sintomas" [(ngModel)]="consulta.sintomas" name="sintomas">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Peso" [(ngModel)]="consulta.peso" name="peso">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Altura" [(ngModel)]="consulta.altura" name="altura">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Pressão" [(ngModel)]="consulta.pressao" name="pressao">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Data da Consulta" [(ngModel)]="consulta.dtConsulta" name="dtConsulta">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Data de Retorno" [(ngModel)]="consulta.dtRetorno" name="dtRetorno">
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput placeholder="Valor da Consulta" [(ngModel)]="consulta.valorConsulta" name="valorConsulta">
+    </mat-form-field>
+  </div>
+  <button class="max-button" mat-raised-button type="submit" color="primary">Salvar</button>
+  <button class="max-button" *ngIf="consulta.id" mat-raised-button type="button" (click)="excluir()" color="primary">Excluir</button>
+</form>

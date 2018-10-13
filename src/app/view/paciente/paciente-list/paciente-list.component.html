@@ -1,0 +1,16 @@
+<div style="max-height: 100%; max-width: 100%;">
+  <form>
+    <mat-form-field style="width: 100%;">
+      <input type="text" placeholder="Procurar Pacientes" aria-label="Number" matInput [formControl]="pacienteSearch" [matAutocomplete]="auto">
+      <mat-autocomplete #auto="matAutocomplete">
+        <mat-option *ngFor="let paciente of filteredOptions | async" [value]="paciente.nome" [routerLink]="['edit']" [queryParams]="{id: paciente.idPaciente}">    
+          {{paciente.nome}}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+  </form>
+  <button mat-button color="primary" [routerLink]="['edit']">
+    <output>Novo Paciente</output>
+  </button>
+  <app-paciente-edit (salvouPaciente)="atualizarLista($event)"></app-paciente-edit>
+</div>

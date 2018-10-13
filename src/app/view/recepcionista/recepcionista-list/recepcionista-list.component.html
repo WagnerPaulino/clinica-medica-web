@@ -1,0 +1,16 @@
+<div style="max-height: 100%; max-width: 100%;">
+  <form>
+    <mat-form-field style="width: 100%;">
+      <input type="text" placeholder="Procurar Recepcionistas" aria-label="Number" matInput [formControl]="recepcionistaSearch" [matAutocomplete]="auto">
+      <mat-autocomplete #auto="matAutocomplete">
+        <mat-option *ngFor="let recepcionista of filteredOptions | async" [value]="recepcionista.nome" [routerLink]="['edit']" [queryParams]="{id: recepcionista.id}">    
+          {{recepcionista.nome}}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+  </form>
+  <button mat-button color="primary" [routerLink]="['edit']">
+    <output>Nova Recepcionista</output>
+  </button>
+  <app-recepcionista-edit (salvouRecepcionista)="atualizarLista($event)"></app-recepcionista-edit>
+</div>

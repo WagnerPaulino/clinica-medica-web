@@ -1,0 +1,23 @@
+<mat-toolbar color="primary">
+    <mat-toolbar-row>
+        <h1 style="padding-right: 1%" routerLink="/">Clinica Medica</h1>
+        <div *ngIf="onResize()">
+            <button mat-raised-button color="primary" routerLink="/consulta-list">Consultas</button>
+            <button mat-raised-button color="primary" routerLink="/medico-list">Medicos</button>
+            <button mat-raised-button color="primary" routerLink="/paciente-list">Pacientes</button>
+            <button mat-raised-button color="primary" routerLink="/proprietario-list">Proprietarios</button>
+            <button mat-raised-button color="primary" routerLink="/recepcionista-list">Recepcionistas</button>
+        </div>
+        <div *ngIf="!onResize()" style="position: absolute; right: 0%;">
+            <button  mat-button [matMenuTriggerFor]="menu">Opções</button>
+            <mat-menu #menu="matMenu">
+                <button mat-menu-item color="primary" routerLink="/consulta-list">Consultas</button>
+                <button mat-menu-item color="primary" routerLink="/medico-list">Medicos</button>
+                <button mat-menu-item color="primary" routerLink="/paciente-list">Pacientes</button>
+                <button mat-menu-item color="primary" routerLink="/proprietario-list">Proprietarios</button>
+                <button mat-menu-item color="primary" routerLink="/recepcionista-list">Recepcionistas</button>
+            </mat-menu>
+        </div>
+    </mat-toolbar-row>
+  </mat-toolbar>
+<router-outlet></router-outlet>

@@ -1,0 +1,16 @@
+<div style="max-height: 100%; max-width: 100%;">
+  <form>
+    <mat-form-field style="width: 100%;">
+      <input type="text" placeholder="Procurar Medicos" aria-label="Number" matInput [formControl]="medicoSearch" [matAutocomplete]="auto">
+      <mat-autocomplete #auto="matAutocomplete">
+        <mat-option *ngFor="let medico of filteredOptions | async" [value]="medico.nome" [routerLink]="['edit']" [queryParams]="{id: medico.id}">    
+          {{medico.nome}}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+  </form>
+  <button mat-button color="primary" [routerLink]="['edit']">
+    <output>Novo Medico</output>
+  </button>
+  <app-medico-edit (salvouMedico)="atualizarLista($event)"></app-medico-edit>
+</div>
