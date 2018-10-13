@@ -51,6 +51,7 @@ export class PacienteEditComponent implements OnInit {
     this.pacienteService.deletar(this.paciente).subscribe((r) => {
       this.paciente = new Paciente();
       this.salvouPaciente.emit();
+      this.router.navigateByUrl('/paciente-list');
     });
   }
 

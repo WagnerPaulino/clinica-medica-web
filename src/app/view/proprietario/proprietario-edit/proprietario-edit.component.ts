@@ -51,6 +51,7 @@ export class ProprietarioEditComponent implements OnInit {
     this.proprietarioService.deletar(this.proprietario).subscribe((r) => {
       this.proprietario = new Proprietario();
       this.salvouProprietario.emit();
+      this.router.navigateByUrl('/proprietario-list');
     });
   }
 

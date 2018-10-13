@@ -51,6 +51,7 @@ export class RecepcionistaEditComponent implements OnInit {
     this.recepcionistaService.deletar(this.recepcionista).subscribe((r) => {
       this.recepcionista = new Recepcionista();
       this.salvouRecepcionista.emit();
+      this.router.navigateByUrl('/recepcionista-list');
     });
   }
 

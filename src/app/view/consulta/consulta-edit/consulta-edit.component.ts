@@ -61,6 +61,7 @@ export class ConsultaEditComponent implements OnInit {
     this.consultaService.deletar(this.consulta).subscribe((r) => {
       this.consulta = new Consulta();
       this.salvouConsulta.emit();
+      this.router.navigateByUrl('/consulta-list');
     });
   }
 
