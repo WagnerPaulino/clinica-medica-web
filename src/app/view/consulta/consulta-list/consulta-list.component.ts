@@ -42,7 +42,7 @@ export class ConsultaListComponent implements OnInit {
   }
 
   private _filter(name: String): Consulta[] {
-    if (name === undefined) {
+    if (name === undefined || name === null) {
       name = '';
     }
     const filterValue = name.toLowerCase();
