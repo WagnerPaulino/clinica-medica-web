@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  urlBase: 'http://localhost:8080/clinica-medica/api/'
+  urlBase: 'https://clinica-medica-service.herokuapp.com/api/'
 };
