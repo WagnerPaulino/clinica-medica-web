@@ -19,7 +19,7 @@ import { MatSnackBarModule,
   MatDatepickerModule,
   MAT_DATE_LOCALE,
   MatProgressBarModule} from '@angular/material';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
