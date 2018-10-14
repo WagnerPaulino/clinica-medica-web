@@ -2,6 +2,7 @@ import { DashboardComponent } from './../view/dashboard/dashboard.component';
 import { NgModule } from '@angular/core';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { CommonModule } from '@angular/common';
+import { MatMomentDateModule } from '@angular/material-moment-adapter';
 import { MatSnackBarModule,
   MatSelectModule,
   MatFormFieldModule,
@@ -13,9 +14,10 @@ import { MatSnackBarModule,
   MatToolbarModule,
   MatCheckboxModule,
   MatDialogModule,
-  MatPaginatorModule,
   MatAutocompleteModule,
-  MatMenuModule} from '@angular/material';
+  MatMenuModule,
+  MatDatepickerModule,
+  MAT_DATE_LOCALE} from '@angular/material';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -34,6 +36,8 @@ const ANGULAR_MATERIAL = [
     MatDialogModule,
     MatAutocompleteModule,
     MatMenuModule,
+    MatDatepickerModule,
+    MatMomentDateModule
 ];
 
 const ANGULAR = [
@@ -58,6 +62,8 @@ const ANGULAR = [
     ANGULAR,
     DashboardComponent
   ],
-  providers: []
+  providers: [
+    {provide: MAT_DATE_LOCALE, useValue: 'pt-BR'}
+  ]
 })
 export class SharedModule { }

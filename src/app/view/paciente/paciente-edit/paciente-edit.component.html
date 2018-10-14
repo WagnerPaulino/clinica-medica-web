@@ -19,7 +19,9 @@
       <input matInput placeholder="Contato residencial" [(ngModel)]="paciente.residencial" name="residencial" #residencial="ngModel">
     </mat-form-field>
     <mat-form-field>
-      <input matInput placeholder="Data de Nascimento" [(ngModel)]="paciente.dtNascimento" name="dtNascimento" #dtNascimento="ngModel">
+      <input matInput [matDatepicker]="dtNascimento" placeholder="Data de Nascimento" [(ngModel)]="paciente.dtNascimento" name="dtNascimento" #dtNascimento="ngModel">
+      <mat-datepicker-toggle matSuffix [for]="dtNascimento"></mat-datepicker-toggle>
+      <mat-datepicker #dtNascimento></mat-datepicker>
     </mat-form-field>
     <mat-form-field>
       <input matInput placeholder="Sexo" [(ngModel)]="paciente.sexo" name="sexo" #sexo="ngModel">

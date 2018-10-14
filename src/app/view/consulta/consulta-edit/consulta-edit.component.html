@@ -55,10 +55,14 @@
       <input matInput placeholder="Pressão" [(ngModel)]="consulta.pressao" name="pressao" #pressao="ngModel">
     </mat-form-field>
     <mat-form-field>
-      <input matInput placeholder="Data da Consulta" [(ngModel)]="consulta.dtConsulta" name="dtConsulta" #dtConsulta="ngModel">
+      <input matInput [matDatepicker]="dtConsulta" placeholder="Data da Consulta" [(ngModel)]="consulta.dtConsulta" name="dtConsulta" #dtConsulta="ngModel">
+      <mat-datepicker-toggle matSuffix [for]="dtConsulta"></mat-datepicker-toggle>
+      <mat-datepicker #dtConsulta></mat-datepicker>
     </mat-form-field>
     <mat-form-field>
-      <input matInput placeholder="Data de Retorno" [(ngModel)]="consulta.dtRetorno" name="dtRetorno" #dtRetorno="ngModel">
+      <input matInput [matDatepicker]="dtRetorno" placeholder="Data de Retorno" [(ngModel)]="consulta.dtRetorno" name="dtRetorno" #dtRetorno="ngModel">
+      <mat-datepicker-toggle matSuffix [for]="dtRetorno"></mat-datepicker-toggle>
+      <mat-datepicker #dtRetorno></mat-datepicker>
     </mat-form-field>
     <mat-form-field>
         <input matInput placeholder="Valor da Consulta" [(ngModel)]="consulta.valorConsulta" name="valorConsulta" #valorConsulta="ngModel">
