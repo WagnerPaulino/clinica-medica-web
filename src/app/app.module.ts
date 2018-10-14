@@ -9,24 +9,30 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { SharedModule } from './shared/shared.module';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { LoaderComponent } from './view/loader/loader.component';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { LoaderInterceptorService } from './services/interceptors/loader-interceptor.service';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LoaderComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     SharedModule,
-    BrowserAnimationsModule,
     ConsultaModule,
     MedicoModule,
     PacienteModule,
     ProprietarioModule,
     RecepcionistaModule
   ],
-  providers: [],
+  providers: [
+    {provide: HTTP_INTERCEPTORS,
+      useClass: LoaderInterceptorService,
+      multi: true}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

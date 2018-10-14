@@ -17,8 +17,9 @@ import { MatSnackBarModule,
   MatAutocompleteModule,
   MatMenuModule,
   MatDatepickerModule,
-  MAT_DATE_LOCALE} from '@angular/material';
-import { HttpClientModule } from '@angular/common/http';
+  MAT_DATE_LOCALE,
+  MatProgressBarModule} from '@angular/material';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
@@ -37,17 +38,21 @@ const ANGULAR_MATERIAL = [
     MatAutocompleteModule,
     MatMenuModule,
     MatDatepickerModule,
-    MatMomentDateModule
+    MatMomentDateModule,
+    MatProgressBarModule
 ];
 
 const ANGULAR = [
   CommonModule,
   HttpClientModule,
   RouterModule,
-  FormsModule,
   ReactiveFormsModule,
+  FormsModule,
   BrowserAnimationsModule
 ];
+  const COMPONENTS = [
+    DashboardComponent
+  ];
 
 @NgModule({
   imports: [
@@ -55,15 +60,15 @@ const ANGULAR = [
     ANGULAR
   ],
   declarations: [
-    DashboardComponent
+    COMPONENTS
   ],
   exports: [
     ANGULAR_MATERIAL,
     ANGULAR,
-    DashboardComponent
+    COMPONENTS
   ],
   providers: [
-    {provide: MAT_DATE_LOCALE, useValue: 'pt-BR'}
+    {provide: MAT_DATE_LOCALE, useValue: 'pt-BR'},
   ]
 })
 export class SharedModule { }
