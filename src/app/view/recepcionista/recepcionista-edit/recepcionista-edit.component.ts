@@ -30,7 +30,7 @@ export class RecepcionistaEditComponent implements OnInit {
     });
    }
   ngOnInit() {}
-  salvar() {
+  salvar(f) {
     if (this.recepcionista.id) {
       this.recepcionistaService.alterar(this.recepcionista).subscribe((r) => {
         this.router.navigateByUrl('/recepcionista-list');

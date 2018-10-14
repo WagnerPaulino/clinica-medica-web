@@ -30,7 +30,7 @@ export class PacienteEditComponent implements OnInit {
     });
    }
   ngOnInit() {}
-  salvar() {
+  salvar(f) {
     if (this.paciente.idPaciente) {
       this.pacienteService.alterar(this.paciente).subscribe((r) => {
         this.router.navigateByUrl('/paciente-list');

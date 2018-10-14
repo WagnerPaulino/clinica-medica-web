@@ -30,7 +30,7 @@ export class ProprietarioEditComponent implements OnInit {
     });
    }
   ngOnInit() {}
-  salvar() {
+  salvar(f) {
     if (this.proprietario.id) {
       this.proprietarioService.alterar(this.proprietario).subscribe((r) => {
         this.router.navigateByUrl('/proprietario-list');

@@ -1,45 +1,48 @@
-<form (ngSubmit)="salvar()">
+<form (ngSubmit)="salvar(f)" #f="ngForm">
   <div class="container-form">
     <mat-form-field>
-      <input matInput placeholder="Nome" [(ngModel)]="medico.nome" name="nome">
+      <input matInput placeholder="Nome" [(ngModel)]="medico.nome" name="nome" #nome="ngModel" required>
+      <mat-error *ngIf="!nome.valid && nome.touched">O nome é necessario</mat-error>
     </mat-form-field>
     <mat-form-field>
-      <input matInput placeholder="CPF" [(ngModel)]="medico.cpf" name="cpf">
+      <input matInput placeholder="CPF" [(ngModel)]="medico.cpf" name="cpf" #cpf="ngModel" required>
+      <mat-error *ngIf="!cpf.valid && cpf.touched">O cpf é necessario</mat-error>
     </mat-form-field>
     <mat-form-field>
-      <input matInput placeholder="RG" [(ngModel)]="medico.rg" name="rg">
+      <input matInput placeholder="RG" [(ngModel)]="medico.rg" name="rg" #rg="ngModel" required>
+      <mat-error *ngIf="!rg.valid && rg.touched">O rg é necessario</mat-error>
     </mat-form-field>
     <mat-form-field>
-      <input matInput placeholder="Celular" [(ngModel)]="medico.celular" name="celular">
+      <input matInput placeholder="Celular" [(ngModel)]="medico.celular" name="celular" #celular="ngModel">
     </mat-form-field>
     <mat-form-field>
-      <input matInput placeholder="Contato residencial" [(ngModel)]="medico.residencial" name="residencial">
+      <input matInput placeholder="Contato residencial" [(ngModel)]="medico.residencial" name="residencial" #residencial="ngModel">
     </mat-form-field>
     <mat-form-field>
-      <input matInput placeholder="Data de Nascimento" [(ngModel)]="medico.dtNascimento" name="dtNascimento">
+      <input matInput placeholder="Data de Nascimento" [(ngModel)]="medico.dtNascimento" name="dtNascimento" #dtNascimento="ngModel">
     </mat-form-field>
     <mat-form-field>
-      <input matInput placeholder="Sexo" [(ngModel)]="medico.sexo" name="sexo">
+      <input matInput placeholder="Sexo" [(ngModel)]="medico.sexo" name="sexo" #sexo="ngModel">
     </mat-form-field>
     <mat-form-field>
-      <input matInput placeholder="Numero da Casa" [(ngModel)]="medico.numCasa" name="numCasa">
+      <input matInput placeholder="Numero da Casa" [(ngModel)]="medico.numCasa" name="numCasa" #numCasa="ngModel">
     </mat-form-field>
     <mat-form-field>
-      <input matInput placeholder="Cidade" [(ngModel)]="medico.cidade" name="cidade">
+      <input matInput placeholder="Cidade" [(ngModel)]="medico.cidade" name="cidade" #cidade="ngModel">
     </mat-form-field>
     <mat-form-field>
-      <input matInput placeholder="Bairro" [(ngModel)]="medico.bairro" name="bairro">
+      <input matInput placeholder="Bairro" [(ngModel)]="medico.bairro" name="bairro" #bairro="ngModel">
     </mat-form-field>
     <mat-form-field>
-      <input matInput placeholder="CEP" [(ngModel)]="medico.cep" name="cep">
+      <input matInput placeholder="CEP" [(ngModel)]="medico.cep" name="cep" #cep="ngModel">
     </mat-form-field>
     <mat-form-field>
-      <input matInput placeholder="CRM" [(ngModel)]="medico.idCrm" name="idCrm">
+      <input matInput placeholder="CRM" [(ngModel)]="medico.idCrm" name="idCrm" #idCrm="ngModel">
     </mat-form-field>
     <mat-form-field>
-      <input matInput placeholder="Especialidade" [(ngModel)]="medico.especialidade" name="especialidade">
+      <input matInput placeholder="Especialidade" [(ngModel)]="medico.especialidade" name="especialidade" #especialidade="ngModel">
     </mat-form-field>
   </div>
-  <button class="max-button" mat-raised-button type="submit" color="primary">Salvar</button>
+  <button class="max-button" mat-raised-button type="submit" color="primary" [disabled]="!f.valid">Salvar</button>
   <button class="max-button" *ngIf="medico.id" mat-raised-button type="button" (click)="excluir()" color="primary">Excluir</button>
 </form>

@@ -50,11 +50,12 @@ export class ConsultaEditComponent implements OnInit {
     });
    }
   ngOnInit() {}
-  salvar() {
+  salvar(f) {
     if (this.consulta.id) {
       this.consultaService.alterar(this.consulta).subscribe((r) => {
         this.router.navigateByUrl('/consulta-list');
         this.id = '';
+        f.form.reset();
         this.consulta = new Consulta();
         this.salvouConsulta.emit();
       });
@@ -62,6 +63,7 @@ export class ConsultaEditComponent implements OnInit {
       this.consultaService.inserir(this.consulta).subscribe((r) => {
         this.router.navigateByUrl('/consulta-list');
         this.id = '';
+        f.form.reset();
         this.consulta = new Consulta();
         this.salvouConsulta.emit();
       });

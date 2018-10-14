@@ -30,7 +30,7 @@ export class MedicoEditComponent implements OnInit {
     });
    }
   ngOnInit() {}
-  salvar() {
+  salvar(f) {
     if (this.medico.id) {
       this.medicoService.alterar(this.medico).subscribe((r) => {
         this.router.navigateByUrl('/medico-list');
