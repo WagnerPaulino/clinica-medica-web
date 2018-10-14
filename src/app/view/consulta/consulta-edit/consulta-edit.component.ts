@@ -1,9 +1,11 @@
+import { PacienteService } from './../../../services/paciente.service';
 import { MedicoService } from './../../../services/medico.service';
 import { Medico } from './../../../domain/medico';
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { ConsultaService } from '../../../services/consulta.service';
 import { Consulta } from '../../../domain/consulta';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Paciente } from '../../../domain/paciente';
 
 @Component({
   selector: 'app-consulta-edit',
@@ -13,6 +15,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class ConsultaEditComponent implements OnInit {
   public consulta: Consulta = new Consulta();
   public medicos: Array<Medico> = [];
+  public pacientes: Array<Paciente> = [];
   private id;
 
   @Output()
@@ -20,10 +23,14 @@ export class ConsultaEditComponent implements OnInit {
 
   constructor(private consultaService: ConsultaService,
       private medicoService: MedicoService,
+      private pacienteService: PacienteService,
       private route: ActivatedRoute,
       private router: Router) {
     this.medicoService.findAll().subscribe((r) => {
       this.medicos = r;
+    });
+    this.pacienteService.findAll().subscribe((r) => {
+      this.pacientes = r;
     });
     this.route.queryParams.subscribe((params) => {
         this.id = params['id'];
@@ -32,6 +39,9 @@ export class ConsultaEditComponent implements OnInit {
             this.consulta = r;
             this.medicoService.findMedicoByConsulta(this.consulta.id).subscribe((m: any) => {
               this.consulta.medico = m;
+            });
+            this.pacienteService.findPacienteByConsulta(this.consulta.id).subscribe((p: any) => {
+              this.consulta.paciente = p;
             });
           });
         } else {

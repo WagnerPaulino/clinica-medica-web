@@ -19,6 +19,10 @@ export class PacienteService {
     return this.http.get(`${this.urlbase}/${id}`);
   }
 
+  findPacienteByConsulta(consultaId) {
+    return this.http.get(`${this.urlbase}/consulta/${consultaId}`);
+  }
+
   inserir(paciente: Paciente) {
     return this.http.post(this.urlbase, paciente);
   }

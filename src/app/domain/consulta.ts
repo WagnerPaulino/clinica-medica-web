@@ -1,3 +1,4 @@
+import { Paciente } from './paciente';
 import { Medico } from './medico';
 export class Consulta {
     id: Number;
@@ -14,4 +15,5 @@ export class Consulta {
     dtRetorno: String;
     valorConsulta: Number;
     medico: Medico = new Medico();
+    paciente: Paciente = new Paciente();
 }

@@ -11,6 +11,17 @@
       </mat-select>
       <mat-hint>Medico reponsavel: {{consulta.medico?.nome}}</mat-hint>
     </mat-form-field>
+    <mat-form-field class="full-width">
+      <mat-select placeholder="Paciente" [(ngModel)]="consulta.paciente" name="paciente">
+          <mat-option [value]="null">
+              Nenhum
+            </mat-option>
+        <mat-option *ngFor="let paciente of pacientes" [value]="paciente">
+          {{ paciente.nome }}
+        </mat-option>
+      </mat-select>
+      <mat-hint>Paciente: {{consulta.paciente?.nome}}</mat-hint>
+    </mat-form-field>
     <mat-form-field>
       <input matInput placeholder="Descricao" [(ngModel)]="consulta.descricao" name="descricao">
     </mat-form-field>
