@@ -1,9 +1,14 @@
 import { DashboardComponent } from './view/dashboard/dashboard.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { LoginComponent } from './view/login/login.component';
+import { LoginGuard } from './services/guards/login.guard';
 
 const routes: Routes = [
-  {path: '', component: DashboardComponent}
+  {path: '', component: DashboardComponent, canActivate: [
+    LoginGuard
+  ]},
+  {path: 'login', component: LoginComponent}
 ];
 
 @NgModule({

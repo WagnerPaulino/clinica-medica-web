@@ -12,11 +12,13 @@ import { SharedModule } from './shared/shared.module';
 import { LoaderComponent } from './view/loader/loader.component';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { LoaderInterceptorService } from './services/interceptors/loader-interceptor.service';
+import { LoginComponent } from './view/login/login.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoaderComponent
+    LoaderComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

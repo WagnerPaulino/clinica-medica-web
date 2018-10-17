@@ -16,9 +16,7 @@ export class LoginComponent implements OnInit {
   }
 
   sign(f) {
-    this.loginService.sign(this.login.usuario, this.login.senha).subscribe((r) => {
-      console.log(r);
-    });
+    this.loginService.sign(this.login.usuario, this.login.senha);
   }
 
 }
