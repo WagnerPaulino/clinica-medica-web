@@ -38,6 +38,14 @@
     <mat-form-field>
       <input matInput placeholder="CEP" [(ngModel)]="paciente.cep" name="cep" #cep="ngModel">
     </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Usuario" [(ngModel)]="paciente.login.usuario" name="usuario" #usuario="ngModel" required>
+      <mat-error *ngIf="!usuario.valid && usuario.touched">O usuario é necessario</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Senha" [(ngModel)]="paciente.login.senha" name="senha" #senha="ngModel" required>
+      <mat-error *ngIf="!senha.valid && senha.touched">O senha é necessario</mat-error>
+    </mat-form-field>
   </div>
   <button class="max-button" mat-raised-button type="submit" color="primary" [disabled]="!f.valid">Salvar</button>
   <button class="max-button" *ngIf="paciente.idPaciente" mat-raised-button type="button" (click)="excluir()" color="primary">Excluir</button>

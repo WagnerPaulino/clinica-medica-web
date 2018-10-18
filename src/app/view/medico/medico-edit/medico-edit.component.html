@@ -39,6 +39,14 @@
       <input matInput placeholder="CEP" [(ngModel)]="medico.cep" name="cep" #cep="ngModel">
     </mat-form-field>
     <mat-form-field>
+      <input matInput placeholder="Usuario" [(ngModel)]="medico.login.usuario" name="usuario" #usuario="ngModel" required>
+      <mat-error *ngIf="!usuario.valid && usuario.touched">O usuario é necessario</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Senha" [(ngModel)]="medico.login.senha" name="senha" #senha="ngModel" required>
+      <mat-error *ngIf="!senha.valid && senha.touched">O senha é necessario</mat-error>
+    </mat-form-field>
+    <mat-form-field>
       <input matInput placeholder="CRM" [(ngModel)]="medico.idCrm" name="idCrm" #idCrm="ngModel">
     </mat-form-field>
     <mat-form-field>

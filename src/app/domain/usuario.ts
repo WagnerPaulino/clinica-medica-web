@@ -1,3 +1,5 @@
+import { Login } from './login';
+
 export class Usuario {
     nome?: String;
     cpf: String;
@@ -10,4 +12,5 @@ export class Usuario {
     cidade: String;
     bairro: String;
     cep: String;
+    login: Login = new Login();
 }

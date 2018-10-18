@@ -1,3 +1,4 @@
+import { LoginService } from './services/login.service';
 import { Component, HostListener } from '@angular/core';
 
 @Component({
@@ -7,6 +8,8 @@ import { Component, HostListener } from '@angular/core';
 })
 export class AppComponent {
   title = 'projeto-clinica-medica';
+
+  constructor(public loginService: LoginService) {}
 
   @HostListener('window:resize')
   onResize() {

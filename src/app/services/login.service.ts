@@ -10,13 +10,14 @@ import { Router } from '@angular/router';
 export class LoginService {
 
   private urlbase = environment.urlBase + 'login';
-  private login: Login;
+  private login?: Login = new Login();
   constructor(private http: HttpClient, private router: Router) { }
 
   sign(usuario, senha) {
     return this.http.post(`${this.urlbase}`, {usuario, senha}).subscribe((login: any) => {
       this.login = login;
-      if(this.isLogged()){
+      console.log(this.login);
+      if (this.isLogged()) {
         this.router.navigate(['']);
       }
     });
@@ -26,7 +27,23 @@ export class LoginService {
     return this.login;
   }
 
-  isLogged(){
-    return this.login ? true : false;
+  isLogged() {
+    return this.login.id ? true : false;
+  }
+
+  isMedico() {
+    return this.login.medico ? true : false;
+  }
+
+  isPaciente() {
+    return this.login.paciente ? true : false;
+  }
+
+  isProprietario() {
+    return this.login.proprietario ? true : false;
+  }
+
+  isRecepcionista() {
+    return this.login.recepcionista ? true : false;
   }
 }

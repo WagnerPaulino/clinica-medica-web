@@ -2,20 +2,20 @@
     <mat-toolbar-row>
         <h1 style="padding-right: 1%" routerLink="/">Clinica Medica</h1>
         <div *ngIf="onResize()">
-            <button routerLinkActive="actived" [routerLinkActiveOptions]="{exact: true}" mat-raised-button color="primary" routerLink="/consulta-list">Consultas</button>
-            <button routerLinkActive="actived" [routerLinkActiveOptions]="{exact: true}" mat-raised-button color="primary" routerLink="/medico-list">Medicos</button>
-            <button routerLinkActive="actived" [routerLinkActiveOptions]="{exact: true}" mat-raised-button color="primary" routerLink="/paciente-list">Pacientes</button>
-            <button routerLinkActive="actived" [routerLinkActiveOptions]="{exact: true}" mat-raised-button color="primary" routerLink="/proprietario-list">Proprietarios</button>
-            <button routerLinkActive="actived" [routerLinkActiveOptions]="{exact: true}" mat-raised-button color="primary" routerLink="/recepcionista-list">Recepcionistas</button>
+            <button *ngIf="loginService.isLogged()" routerLinkActive="actived" [routerLinkActiveOptions]="{exact: true}" mat-raised-button color="primary" routerLink="/consulta-list">Consultas</button>
+            <button *ngIf="loginService.isRecepcionista() || loginService.isProprietario()" routerLinkActive="actived" [routerLinkActiveOptions]="{exact: true}" mat-raised-button color="primary" routerLink="/medico-list">Medicos</button>
+            <button *ngIf="loginService.isMedico() || loginService.isRecepcionista() || loginService.isProprietario()" routerLinkActive="actived" [routerLinkActiveOptions]="{exact: true}" mat-raised-button color="primary" routerLink="/paciente-list">Pacientes</button>
+            <button *ngIf="loginService.isProprietario()" routerLinkActive="actived" [routerLinkActiveOptions]="{exact: true}" mat-raised-button color="primary" routerLink="/proprietario-list">Proprietarios</button>
+            <button *ngIf="loginService.isProprietario()" routerLinkActive="actived" [routerLinkActiveOptions]="{exact: true}" mat-raised-button color="primary" routerLink="/recepcionista-list">Recepcionistas</button>
         </div>
         <div *ngIf="!onResize()" style="position: absolute; right: 0%;">
             <button  mat-button [matMenuTriggerFor]="menu">Opções</button>
             <mat-menu #menu="matMenu">
-                <button routerLinkActive="actived" [routerLinkActiveOptions]="{exact: true}" mat-menu-item color="primary" routerLink="/consulta-list">Consultas</button>
-                <button routerLinkActive="actived" [routerLinkActiveOptions]="{exact: true}" mat-menu-item color="primary" routerLink="/medico-list">Medicos</button>
-                <button routerLinkActive="actived" [routerLinkActiveOptions]="{exact: true}" mat-menu-item color="primary" routerLink="/paciente-list">Pacientes</button>
-                <button routerLinkActive="actived" [routerLinkActiveOptions]="{exact: true}" mat-menu-item color="primary" routerLink="/proprietario-list">Proprietarios</button>
-                <button routerLinkActive="actived" [routerLinkActiveOptions]="{exact: true}" mat-menu-item color="primary" routerLink="/recepcionista-list">Recepcionistas</button>
+                <button *ngIf="loginService.isLogged()" routerLinkActive="actived" [routerLinkActiveOptions]="{exact: true}" mat-menu-item color="primary" routerLink="/consulta-list">Consultas</button>
+                <button *ngIf="loginService.isRecepcionista() || loginService.isProprietario()" routerLinkActive="actived" [routerLinkActiveOptions]="{exact: true}" mat-menu-item color="primary" routerLink="/medico-list">Medicos</button>
+                <button *ngIf="loginService.isMedico() || loginService.isRecepcionista() || loginService.isProprietario()" routerLinkActive="actived" [routerLinkActiveOptions]="{exact: true}" mat-menu-item color="primary" routerLink="/paciente-list">Pacientes</button>
+                <button *ngIf="loginService.isProprietario()" routerLinkActive="actived" [routerLinkActiveOptions]="{exact: true}" mat-menu-item color="primary" routerLink="/proprietario-list">Proprietarios</button>
+                <button *ngIf="loginService.isProprietario()" routerLinkActive="actived" [routerLinkActiveOptions]="{exact: true}" mat-menu-item color="primary" routerLink="/recepcionista-list">Recepcionistas</button>
             </mat-menu>
         </div>
     </mat-toolbar-row>

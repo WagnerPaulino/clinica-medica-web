@@ -6,17 +6,17 @@ import { LoginService } from '../login.service';
 @Injectable({
   providedIn: 'root'
 })
-export class LoginGuard implements CanActivate {
+export class ProprietarioGuard implements CanActivate {
 
   constructor(private loginService: LoginService, private router: Router) {}
 
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
-    if (this.loginService.isLogged() === false) {
-      this.router.navigate(['login']);
+      if (this.loginService.isProprietario()) {
+        return true;
+      }
+      this.router.navigate(['']);
       return false;
-    }
-    return true;
   }
 }
