@@ -1,3 +1,4 @@
+import { LoginService } from './../../../services/login.service';
 import { PacienteService } from './../../../services/paciente.service';
 import { MedicoService } from './../../../services/medico.service';
 import { Medico } from './../../../domain/medico';
@@ -13,7 +14,7 @@ import { Paciente } from '../../../domain/paciente';
   styleUrls: ['./consulta-edit.component.css']
 })
 export class ConsultaEditComponent implements OnInit {
-  public consulta: Consulta = new Consulta();
+  public consulta: any = new Consulta();
   public medicos: Array<Medico> = [];
   public pacientes: Array<Paciente> = [];
   private id;
@@ -25,7 +26,8 @@ export class ConsultaEditComponent implements OnInit {
       private medicoService: MedicoService,
       private pacienteService: PacienteService,
       private route: ActivatedRoute,
-      private router: Router) {
+      private router: Router,
+      private loginService: LoginService) {
     this.medicoService.findAll().subscribe((r) => {
       this.medicos = r;
     });
@@ -48,6 +50,11 @@ export class ConsultaEditComponent implements OnInit {
           this.consulta = new Consulta;
         }
     });
+    if (this.loginService.isPaciente()) {
+      this.pacienteService.findOne(this.loginService.getUserLogged().paciente.idPaciente).subscribe((r) => {
+        this.consulta.paciente = r;
+      });
+    }
    }
   ngOnInit() {}
   salvar(f) {

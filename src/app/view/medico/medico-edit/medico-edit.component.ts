@@ -1,7 +1,9 @@
+import { LoginService } from './../../../services/login.service';
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { MedicoService } from '../../../services/medico.service';
 import { Medico } from '../../../domain/medico';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ProprietarioService } from '../../../services/proprietario.service';
 
 @Component({
   selector: 'app-medico-edit',
@@ -9,7 +11,7 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./medico-edit.component.css']
 })
 export class MedicoEditComponent implements OnInit {
-  public medico: Medico = new Medico();
+  public medico: any = new Medico();
   private id;
 
   @Output()
@@ -17,7 +19,9 @@ export class MedicoEditComponent implements OnInit {
 
   constructor(private medicoService: MedicoService,
       private route: ActivatedRoute,
-      private router: Router) {
+      private router: Router,
+      private loginService: LoginService,
+      private proprietarioService: ProprietarioService) {
     this.route.queryParams.subscribe((params) => {
         this.id = params['id'];
         if (this.id) {
@@ -28,6 +32,11 @@ export class MedicoEditComponent implements OnInit {
           this.medico = new Medico;
         }
     });
+    if (this.loginService.isProprietario()) {
+      this.proprietarioService.findOne(this.loginService.getUserLogged().proprietario.id).subscribe((r) => {
+        this.medico.proprietario = r;
+      });
+    }
    }
   ngOnInit() {}
   salvar(f) {

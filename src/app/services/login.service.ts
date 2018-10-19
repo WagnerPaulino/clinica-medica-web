@@ -16,7 +16,6 @@ export class LoginService {
   sign(usuario, senha) {
     return this.http.post(`${this.urlbase}`, {usuario, senha}).subscribe((login: any) => {
       this.login = login;
-      console.log(this.login);
       if (this.isLogged()) {
         this.router.navigate(['']);
       }

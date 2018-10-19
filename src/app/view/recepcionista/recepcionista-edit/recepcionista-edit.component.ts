@@ -1,7 +1,9 @@
+import { LoginService } from './../../../services/login.service';
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { RecepcionistaService } from '../../../services/recepcionista.service';
 import { Recepcionista } from '../../../domain/recepcionista';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ProprietarioService } from '../../../services/proprietario.service';
 
 @Component({
   selector: 'app-recepcionista-edit',
@@ -9,7 +11,7 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./recepcionista-edit.component.css']
 })
 export class RecepcionistaEditComponent implements OnInit {
-  public recepcionista: Recepcionista = new Recepcionista();
+  public recepcionista: any = new Recepcionista();
   private id;
 
   @Output()
@@ -17,17 +19,25 @@ export class RecepcionistaEditComponent implements OnInit {
 
   constructor(private recepcionistaService: RecepcionistaService,
       private route: ActivatedRoute,
-      private router: Router) {
+      private router: Router,
+      private loginService: LoginService,
+      private proprietarioService: ProprietarioService) {
     this.route.queryParams.subscribe((params) => {
         this.id = params['id'];
         if (this.id) {
           this.recepcionistaService.findOne(this.id).subscribe((r: Recepcionista) => {
             this.recepcionista = r;
+            console.log(r);
           });
         } else {
           this.recepcionista = new Recepcionista;
         }
     });
+    if (this.loginService.isProprietario()) {
+      this.proprietarioService.findOne(this.loginService.getUserLogged().proprietario.id).subscribe((r) => {
+        this.recepcionista.proprietario = r;
+      });
+    }
    }
   ngOnInit() {}
   salvar(f) {

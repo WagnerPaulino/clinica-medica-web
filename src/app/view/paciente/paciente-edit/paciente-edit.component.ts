@@ -1,3 +1,7 @@
+import { Recepcionista } from './../../../domain/recepcionista';
+import { RecepcionistaService } from './../../../services/recepcionista.service';
+import { MedicoService } from './../../../services/medico.service';
+import { LoginService } from './../../../services/login.service';
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { PacienteService } from '../../../services/paciente.service';
 import { Paciente } from '../../../domain/paciente';
@@ -17,7 +21,10 @@ export class PacienteEditComponent implements OnInit {
 
   constructor(private pacienteService: PacienteService,
       private route: ActivatedRoute,
-      private router: Router) {
+      private router: Router,
+      private loginService: LoginService,
+      private medicoService: MedicoService,
+      private recepcionistaService: RecepcionistaService) {
     this.route.queryParams.subscribe((params) => {
         this.id = params['id'];
         if (this.id) {
@@ -28,6 +35,16 @@ export class PacienteEditComponent implements OnInit {
           this.paciente = new Paciente;
         }
     });
+    if (this.loginService.isMedico()) {
+      this.medicoService.findOne(this.loginService.getUserLogged().medico.id).subscribe((r: any) => {
+        this.paciente.medico = r;
+      });
+    }
+    if (this.loginService.isRecepcionista()) {
+      this.recepcionistaService.findOne(this.loginService.getUserLogged().recepcionista.id).subscribe((r: Recepcionista) => {
+        this.paciente.recepcionistas.includes(r);
+      });
+    }
    }
   ngOnInit() {}
   salvar(f) {
