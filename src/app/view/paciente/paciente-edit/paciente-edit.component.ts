@@ -42,7 +42,8 @@ export class PacienteEditComponent implements OnInit {
     }
     if (this.loginService.isRecepcionista()) {
       this.recepcionistaService.findOne(this.loginService.getUserLogged().recepcionista.id).subscribe((r: Recepcionista) => {
-        this.paciente.recepcionistas.includes(r);
+        this.paciente.recepcionistas.push(r);
+        console.log(this.paciente);
       });
     }
    }
