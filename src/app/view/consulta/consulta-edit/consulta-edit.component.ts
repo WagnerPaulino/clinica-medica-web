@@ -39,10 +39,10 @@ export class ConsultaEditComponent implements OnInit {
         if (this.id) {
           this.consultaService.findOne(this.id).subscribe((r: Consulta) => {
             this.consulta = r;
-            this.medicoService.findMedicoByConsulta(this.consulta.id).subscribe((m: any) => {
+            this.medicoService.findMedicoByConsulta().subscribe((m: any) => {
               this.consulta.medico = m;
             });
-            this.pacienteService.findPacienteByConsulta(this.consulta.id).subscribe((p: any) => {
+            this.pacienteService.findPacienteByConsulta().subscribe((p: any) => {
               this.consulta.paciente = p;
             });
           });

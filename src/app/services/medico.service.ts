@@ -19,8 +19,8 @@ export class MedicoService {
     return this.http.get(`${this.urlbase}/${id}`);
   }
 
-  findMedicoByConsulta(consultaId) {
-    return this.http.get(`${this.urlbase}/consulta/${consultaId}`);
+  findMedicoByConsulta() {
+    return this.http.get(`${this.urlbase}/consulta`);
   }
 
   inserir(medico: Medico) {
