@@ -17,7 +17,7 @@ export class ConsultaEditComponent implements OnInit {
   public consulta: any = new Consulta();
   public medicos: Array<Medico> = [];
   public pacientes: Array<Paciente> = [];
-  private id;
+  private idConsulta;
 
   @Output()
   public salvouConsulta = new EventEmitter();
@@ -35,14 +35,14 @@ export class ConsultaEditComponent implements OnInit {
       this.pacientes = r;
     });
     this.route.queryParams.subscribe((params) => {
-        this.id = params['id'];
-        if (this.id) {
-          this.consultaService.findOne(this.id).subscribe((r: Consulta) => {
+        this.idConsulta = params['id'];
+        if (this.idConsulta) {
+          this.consultaService.findOne(this.idConsulta).subscribe((r: Consulta) => {
             this.consulta = r;
-            this.medicoService.findMedicoByConsulta().subscribe((m: any) => {
+            this.medicoService.findMedicoByConsulta(this.idConsulta).subscribe((m: any) => {
               this.consulta.medico = m;
             });
-            this.pacienteService.findPacienteByConsulta().subscribe((p: any) => {
+            this.pacienteService.findPacienteByConsulta(this.idConsulta).subscribe((p: any) => {
               this.consulta.paciente = p;
             });
           });
@@ -61,7 +61,7 @@ export class ConsultaEditComponent implements OnInit {
     if (this.consulta.id) {
       this.consultaService.alterar(this.consulta).subscribe((r) => {
         this.router.navigateByUrl('/consulta-list');
-        this.id = '';
+        this.idConsulta = '';
         f.form.reset();
         this.consulta = new Consulta();
         this.salvouConsulta.emit();
@@ -69,7 +69,7 @@ export class ConsultaEditComponent implements OnInit {
     } else {
       this.consultaService.inserir(this.consulta).subscribe((r) => {
         this.router.navigateByUrl('/consulta-list');
-        this.id = '';
+        this.idConsulta = '';
         f.form.reset();
         this.consulta = new Consulta();
         this.salvouConsulta.emit();
