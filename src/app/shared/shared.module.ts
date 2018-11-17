@@ -18,7 +18,9 @@ import { MatSnackBarModule,
   MatMenuModule,
   MatDatepickerModule,
   MAT_DATE_LOCALE,
-  MatProgressBarModule} from '@angular/material';
+  MatProgressBarModule,
+  MatSlideToggleModule,
+  MatBadgeModule} from '@angular/material';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -39,7 +41,10 @@ const ANGULAR_MATERIAL = [
     MatMenuModule,
     MatDatepickerModule,
     MatMomentDateModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    MatSlideToggleModule,
+    MatBadgeModule
+
 ];
 
 const ANGULAR = [

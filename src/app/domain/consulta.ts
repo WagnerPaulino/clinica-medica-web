@@ -14,6 +14,7 @@ export class Consulta {
     dtConsulta: String;
     dtRetorno: String;
     valorConsulta: Number;
+    realizada: Boolean;
     medico: Medico = new Medico();
     paciente: Paciente = new Paciente();
 }

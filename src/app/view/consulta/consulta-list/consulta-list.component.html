@@ -5,6 +5,7 @@
       <mat-autocomplete #auto="matAutocomplete">
         <mat-option *ngFor="let consulta of filteredOptions | async" [value]="consulta.exame" [routerLink]="['edit']" [queryParams]="{id: consulta.id}">    
           {{consulta.exame}}
+          <span *ngIf="consulta.realizada" matBadge="F" size="large"></span>
         </mat-option>
       </mat-autocomplete>
     </mat-form-field>

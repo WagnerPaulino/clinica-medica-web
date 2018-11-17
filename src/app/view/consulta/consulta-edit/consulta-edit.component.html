@@ -1,5 +1,9 @@
 <form (ngSubmit)="salvar(f)" #f="ngForm">
   <div class="container-form">
+    <mat-slide-toggle [(ngModel)]="consulta.realizada"
+        [checked]="consulta.realizada" name="realizada">
+        Consulta Realizada?
+    </mat-slide-toggle>
     <mat-form-field class="full-width">
       <mat-select placeholder="Medico" [(ngModel)]="consulta.medico" name="medico" #medico="ngModel" required>
           <mat-option [value]="null">
