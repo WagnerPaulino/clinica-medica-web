@@ -27,7 +27,6 @@ export class RecepcionistaEditComponent implements OnInit {
         if (this.id) {
           this.recepcionistaService.findOne(this.id).subscribe((r: Recepcionista) => {
             this.recepcionista = r;
-            console.log(r);
           });
         } else {
           this.recepcionista = new Recepcionista;
