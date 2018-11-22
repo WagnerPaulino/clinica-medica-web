@@ -8,7 +8,8 @@ class Model {
 }
 export class CacheUtis {
     private cache: Array<Model>;
-    constructor() {
+    private static _instance: CacheUtis | undefined;
+    private constructor() {
         if (this.cache === null || this.cache === undefined) {
             this.cache = [];
         }
@@ -26,5 +27,13 @@ export class CacheUtis {
     }
     clearCache(): void {
         this.cache = [];
+    }
+
+    instance() {
+        if (CacheUtis._instance === undefined) {
+            // no error, since the code is inside the class
+            CacheUtis._instance = new CacheUtis();
+        }
+        return CacheUtis._instance;
     }
 }
