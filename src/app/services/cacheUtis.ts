@@ -7,13 +7,13 @@ class Model {
     }
 }
 export class CacheUtis {
-    private cache: Array<Model>;
-    private static _instance: CacheUtis | undefined;
     private constructor() {
         if (this.cache === null || this.cache === undefined) {
             this.cache = [];
         }
     }
+    private static _instance: CacheUtis | undefined;
+    private cache: Array<Model>;
     getValueCache(key: any): any {
         return this.cache.find((v) => v.key = key);
     }
@@ -31,7 +31,6 @@ export class CacheUtis {
 
     instance() {
         if (CacheUtis._instance === undefined) {
-            // no error, since the code is inside the class
             CacheUtis._instance = new CacheUtis();
         }
         return CacheUtis._instance;
