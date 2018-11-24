@@ -1,7 +1,7 @@
 <form (ngSubmit)="salvar(f)" #f="ngForm">
   <div class="container-form">
     <mat-slide-toggle [(ngModel)]="consulta.realizada"
-        [checked]="consulta.realizada" name="realizada">
+        [checked]="consulta.realizada || false" name="realizada">
         Consulta Realizada?
     </mat-slide-toggle>
     <mat-form-field class="full-width">
