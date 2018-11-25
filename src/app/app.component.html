@@ -1,18 +1,16 @@
 <mat-toolbar color="primary">
     <mat-toolbar-row>
         <h1 style="padding-right: 1%" routerLink="/">Clinica Medica</h1>
-        <div *ngIf="onResize()">
+        <div *ngIf="onResize()" flex>
             <button *ngIf="loginService.isLogged()" routerLinkActive="actived" [routerLinkActiveOptions]="{exact: false}" mat-raised-button color="primary" routerLink="/consulta-list">Consultas</button>
             <button *ngIf="loginService.isRecepcionista() || loginService.isProprietario()" routerLinkActive="actived" [routerLinkActiveOptions]="{exact: false}" mat-raised-button color="primary" routerLink="/medico-list">Medicos</button>
             <button *ngIf="loginService.isMedico() || loginService.isRecepcionista() || loginService.isProprietario()" routerLinkActive="actived" [routerLinkActiveOptions]="{exact: false}" mat-raised-button color="primary" routerLink="/paciente-list">Pacientes</button>
             <button *ngIf="loginService.isProprietario()" routerLinkActive="actived" [routerLinkActiveOptions]="{exact: false}" mat-raised-button color="primary" routerLink="/proprietario-list">Proprietarios</button>
             <button *ngIf="loginService.isProprietario()" routerLinkActive="actived" [routerLinkActiveOptions]="{exact: false}" mat-raised-button color="primary" routerLink="/recepcionista-list">Recepcionistas</button>
         </div>
-        <span *ngIf="loginService.isLogged() && onResize()" class="user">Seja Bem Vindo {{loginService.getUserLogged()?.usuario}}</span>
         <div *ngIf="loginService.isLogged() && !onResize()" style="position: absolute; right: 0%;">
             <button  mat-button [matMenuTriggerFor]="menu">Opções</button>
             <mat-menu #menu="matMenu">
-                <span *ngIf="loginService.isLogged() && !onResize()">Seja Bem Vindo {{loginService.getUserLogged()?.usuario}}</span>
                 <button *ngIf="loginService.isLogged()" routerLinkActive="actived" [routerLinkActiveOptions]="{exact: false}" mat-menu-item color="primary" routerLink="/consulta-list">Consultas</button>
                 <button *ngIf="loginService.isRecepcionista() || loginService.isProprietario()" routerLinkActive="actived" [routerLinkActiveOptions]="{exact: false}" mat-menu-item color="primary" routerLink="/medico-list">Medicos</button>
                 <button *ngIf="loginService.isMedico() || loginService.isRecepcionista() || loginService.isProprietario()" routerLinkActive="actived" [routerLinkActiveOptions]="{exact: false}" mat-menu-item color="primary" routerLink="/paciente-list">Pacientes</button>

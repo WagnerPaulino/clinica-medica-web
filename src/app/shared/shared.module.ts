@@ -20,7 +20,8 @@ import { MatSnackBarModule,
   MAT_DATE_LOCALE,
   MatProgressBarModule,
   MatSlideToggleModule,
-  MatBadgeModule} from '@angular/material';
+  MatBadgeModule,
+  MatCardModule} from '@angular/material';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -43,7 +44,8 @@ const ANGULAR_MATERIAL = [
     MatMomentDateModule,
     MatProgressBarModule,
     MatSlideToggleModule,
-    MatBadgeModule
+    MatBadgeModule,
+    MatCardModule
 
 ];
 
