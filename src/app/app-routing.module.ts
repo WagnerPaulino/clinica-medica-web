@@ -7,8 +7,8 @@ import { LoginGuard } from './services/guards/login.guard';
 const routes: Routes = [
   {path: '', component: DashboardComponent, canActivate: [
     LoginGuard
-  ]},
-  {path: 'login', component: LoginComponent}
+  ], data: {animation: 'FilterPage'}},
+  {path: 'login', component: LoginComponent, data: {animation: 'HomePage'}}
 ];
 
 @NgModule({
