@@ -15,5 +15,37 @@
           <mat-card-actions>
           </mat-card-actions>
         </mat-card>
+        <mat-accordion>
+          <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                Conheça nossos Médicos
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <mat-list>
+              <h3 mat-subheader>Médicos</h3>
+              <mat-list-item *ngFor="let medico of medicos">
+                <h4 mat-line>Nome: {{medico?.nome}}</h4>
+                <p mat-line>CRM: {{medico?.idCrm}}</p>
+                <p mat-line>Especialidade: {{medico?.especialidade}}</p>
+              </mat-list-item>
+            </mat-list>
+          </mat-expansion-panel>
+        </mat-accordion>
+        <mat-accordion>
+          <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                Conheça nossas Recepcionistas
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <mat-list>
+              <h3 mat-subheader>Recepcionistas</h3>
+              <mat-list-item *ngFor="let recepcionista of recepcionistas">
+                <h4 mat-line>Nome: {{recepcionista?.nome}}</h4>
+              </mat-list-item>
+            </mat-list>
+          </mat-expansion-panel>
+        </mat-accordion>
     </div>
 </section>

@@ -1,5 +1,9 @@
+import { Medico } from './../../domain/medico';
+import { MedicoService } from './../../services/medico.service';
 import { Component, OnInit } from '@angular/core';
 import { LoginService } from '../../services/login.service';
+import { RecepcionistaService } from 'src/app/services/recepcionista.service';
+import { Recepcionista } from 'src/app/domain/recepcionista';
 
 @Component({
   selector: 'app-dashboard',
@@ -8,7 +12,18 @@ import { LoginService } from '../../services/login.service';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor(public loginService: LoginService) { }
+  public medicos: Medico[] = [];
+  public recepcionistas: Recepcionista[] = [];
+  constructor(public loginService: LoginService,
+    public medicoService: MedicoService,
+    public recepcionistaService: RecepcionistaService) {
+    this.medicoService.findAll().subscribe((r) => {
+      this.medicos = r;
+    });
+    this.recepcionistaService.findAll().subscribe((r) => {
+      this.recepcionistas = r;
+    });
+   }
 
   ngOnInit() {
   }
