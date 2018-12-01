@@ -14,6 +14,7 @@ export class DashboardComponent implements OnInit {
 
   public medicos: Medico[] = [];
   public recepcionistas: Recepcionista[] = [];
+  public panelOpenState: Boolean = false;
   constructor(public loginService: LoginService,
     public medicoService: MedicoService,
     public recepcionistaService: RecepcionistaService) {
