@@ -32,20 +32,5 @@
             </mat-list>
           </mat-expansion-panel>
         </mat-accordion>
-        <mat-accordion>
-          <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
-            <mat-expansion-panel-header>
-              <mat-panel-title>
-                Conheça nossas Recepcionistas
-              </mat-panel-title>
-            </mat-expansion-panel-header>
-            <mat-list>
-              <h3 mat-subheader>Recepcionistas</h3>
-              <mat-list-item *ngFor="let recepcionista of recepcionistas">
-                <h4 mat-line>Nome: {{recepcionista?.nome}}</h4>
-              </mat-list-item>
-            </mat-list>
-          </mat-expansion-panel>
-        </mat-accordion>
     </div>
 </section>
