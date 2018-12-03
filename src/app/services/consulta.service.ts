@@ -11,6 +11,10 @@ export class ConsultaService {
   private urlbase = environment.urlBase + 'consultas';
   constructor(private http: HttpClient) { }
 
+  gerarProntuario(id) {
+    return `${this.urlbase}/prontuario/${id}`;
+  }
+
   findAll(): Observable<any> {
     return this.http.get(`${this.urlbase}`);
   }

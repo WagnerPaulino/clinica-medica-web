@@ -1,4 +1,5 @@
 <form (ngSubmit)="salvar(f)" #f="ngForm">
+  <a *ngIf="consulta.id" mat-raised-button (click)="gerarRelatorio()" color="primary">Gerar Prontuario</a>
   <div class="container-form">
     <mat-slide-toggle [(ngModel)]="consulta.realizada"
         [checked]="consulta.realizada || false" name="realizada">

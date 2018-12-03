@@ -57,6 +57,11 @@ export class ConsultaEditComponent implements OnInit {
     }
    }
   ngOnInit() {}
+
+  gerarRelatorio() {
+    window.open(this.consultaService.gerarProntuario(this.consulta.id), '_blank');
+  }
+
   salvar(f) {
     if (this.consulta.id) {
       this.consultaService.alterar(this.consulta).subscribe((r) => {
