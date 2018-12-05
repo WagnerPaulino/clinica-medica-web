@@ -15,6 +15,10 @@ export class ConsultaService {
     return `${this.urlbase}/prontuario/${id}`;
   }
 
+  countConsultasProximosDias() {
+    return this.http.get(`${this.urlbase}/consultas-proximos-dias`);
+  }
+
   findAll(): Observable<any> {
     return this.http.get(`${this.urlbase}`);
   }

@@ -23,9 +23,14 @@ import { MatSnackBarModule,
   MatBadgeModule,
   MatCardModule,
   MatExpansionModule} from '@angular/material';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
+const NGXCHARTSMODULES = [
+  NgxChartsModule
+];
 
 const ANGULAR_MATERIAL = [
     MatToolbarModule,
@@ -66,7 +71,8 @@ const ANGULAR = [
 @NgModule({
   imports: [
     ANGULAR_MATERIAL,
-    ANGULAR
+    ANGULAR,
+    NGXCHARTSMODULES
   ],
   declarations: [
     COMPONENTS
@@ -74,7 +80,8 @@ const ANGULAR = [
   exports: [
     ANGULAR_MATERIAL,
     ANGULAR,
-    COMPONENTS
+    COMPONENTS,
+    NGXCHARTSMODULES
   ],
   providers: [
     {provide: MAT_DATE_LOCALE, useValue: 'pt-BR'},
