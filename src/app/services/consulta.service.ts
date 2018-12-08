@@ -25,8 +25,8 @@ export class ConsultaService {
   }
 
   relatorioConsultaByPeriodo(dtConsultaIni?, dtConsultaFim?, dtRetornoIni?, dtRetornoFim?) {
-    return this.http.get(`${this.urlbase}/relatorio/periodo?`
-    + `dtConsultaIni=${dtConsultaIni}&dtConsultaFim=${dtConsultaFim}&dtRetornoIni=${dtRetornoIni}&dtRetornoFim=${dtRetornoFim}`);
+    return `${this.urlbase}/relatorio/periodo?`
+    + `dtConsultaIni=${dtConsultaIni}&dtConsultaFim=${dtConsultaFim}&dtRetornoIni=${dtRetornoIni}&dtRetornoFim=${dtRetornoFim}`;
   }
 
   findAll(): Observable<any> {

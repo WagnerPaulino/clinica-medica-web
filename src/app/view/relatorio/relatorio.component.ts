@@ -25,7 +25,7 @@ export class RelatorioComponent implements OnInit {
   public dtRetornoFim: any = '';
 
   //Tabela Periodo Consultas
-  displayedColumns: string[] = ['Data Consulta', 'Data Retorno', 'Tratamento', 'Exame', 'Sintomas'];
+  displayedColumns: string[] = [/*'Nome Medico', 'Nome Paciente',*/ 'Data Consulta', 'Data Retorno', 'Tratamento', 'Exame', 'Sintomas'];
 
   //Grafico contador de consultas
   showXAxis = true;
@@ -49,7 +49,6 @@ export class RelatorioComponent implements OnInit {
       r.map((e) => {
         this.countConsultaProximosDias.push(new Grafico(e.dtConsulta, e.count));
       });
-      console.log(this.countConsultaProximosDias);
     });
     window.addEventListener('resize', (r: any) => this.width = r.currentTarget.innerWidth);
   }
@@ -70,6 +69,14 @@ export class RelatorioComponent implements OnInit {
       ).subscribe((r: any) => {
       this.consultas = r;
     });
+  }
+
+  gerarRelatorio() {
+    console.log(this.formulario.value.dtConsultaFim.format('YYYY/MM/DD'));
+    window.open(this.consultaService.relatorioConsultaByPeriodo(this.formulario.value.dtConsultaIni.format('YYYY/MM/DD'),
+    this.formulario.value.dtConsultaFim.format('YYYY/MM/DD'),
+    this.formulario.value.dtConsultaIni.format('YYYY/MM/DD'),
+    this.formulario.value.dtConsultaFim.format('YYYY/MM/DD')), '_blank');
   }
 
 }
