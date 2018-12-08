@@ -3,7 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { Grafico } from 'src/app/models/grafico';
 import { ConsultaService } from 'src/app/services/consulta.service';
 import { LoginService } from 'src/app/services/login.service';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder } from '@angular/forms';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-relatorio',
@@ -61,15 +62,13 @@ export class RelatorioComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.formulario.value);
     this.consultaService.findConsultaByPeriodo(
-      this.formulario.value.dtConsultaIni,
-      this.formulario.value.dtConsultaFim,
-      this.formulario.value.dtConsultaIni,
-      this.formulario.value.dtConsultaFim
+      this.formulario.value.dtConsultaIni.format('YYYY/MM/DD'),
+      this.formulario.value.dtConsultaFim.format('YYYY/MM/DD'),
+      this.formulario.value.dtConsultaIni.format('YYYY/MM/DD'),
+      this.formulario.value.dtConsultaFim.format('YYYY/MM/DD')
       ).subscribe((r: any) => {
       this.consultas = r;
-      console.log(this.consultas);
     });
   }
 

@@ -24,6 +24,11 @@ export class ConsultaService {
     + `dtConsultaIni=${dtConsultaIni}&dtConsultaFim=${dtConsultaFim}&dtRetornoIni=${dtRetornoIni}&dtRetornoFim=${dtRetornoFim}`);
   }
 
+  relatorioConsultaByPeriodo(dtConsultaIni?, dtConsultaFim?, dtRetornoIni?, dtRetornoFim?) {
+    return this.http.get(`${this.urlbase}/relatorio/periodo?`
+    + `dtConsultaIni=${dtConsultaIni}&dtConsultaFim=${dtConsultaFim}&dtRetornoIni=${dtRetornoIni}&dtRetornoFim=${dtRetornoFim}`);
+  }
+
   findAll(): Observable<any> {
     return this.http.get(`${this.urlbase}`);
   }

@@ -33,10 +33,14 @@
       </mat-expansion-panel-header>
       <form [formGroup]="formulario" (ngSubmit)="onSubmit()" style="width: 100%;">
           <mat-form-field>
-            <input matInput placeholder="Inicio do Periodo" formControlName="dtConsultaIni">
+            <input matInput [matDatepicker]="dtConsultaIni" placeholder="Inicio do Periodo" formControlName="dtConsultaIni">
+            <mat-datepicker-toggle matSuffix [for]="dtConsultaIni"></mat-datepicker-toggle>
+            <mat-datepicker #dtConsultaIni></mat-datepicker>
           </mat-form-field>
           <mat-form-field>
-            <input matInput placeholder="Fim do Periodo" formControlName="dtConsultaFim">
+            <input matInput [matDatepicker]="dtConsultaFim" placeholder="Fim do Periodo" formControlName="dtConsultaFim">
+            <mat-datepicker-toggle matSuffix [for]="dtConsultaFim"></mat-datepicker-toggle>
+            <mat-datepicker #dtConsultaFim></mat-datepicker>
           </mat-form-field>
           <button mat-raised-button type="submit">Pesquisar</button>
           <table mat-table [dataSource]="consultas" style="width: 100%;">
