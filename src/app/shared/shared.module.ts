@@ -22,7 +22,8 @@ import { MatSnackBarModule,
   MatSlideToggleModule,
   MatBadgeModule,
   MatCardModule,
-  MatExpansionModule} from '@angular/material';
+  MatExpansionModule,
+  MatTableModule} from '@angular/material';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
@@ -52,7 +53,8 @@ const ANGULAR_MATERIAL = [
     MatSlideToggleModule,
     MatBadgeModule,
     MatCardModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatTableModule
 
 ];
 

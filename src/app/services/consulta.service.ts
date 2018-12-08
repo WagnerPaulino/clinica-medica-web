@@ -19,6 +19,11 @@ export class ConsultaService {
     return this.http.get(`${this.urlbase}/consultas-proximos-dias`);
   }
 
+  findConsultaByPeriodo(dtConsultaIni?, dtConsultaFim?, dtRetornoIni?, dtRetornoFim?) {
+    return this.http.get(`${this.urlbase}/periodo?`
+    + `dtConsultaIni=${dtConsultaIni}&dtConsultaFim=${dtConsultaFim}&dtRetornoIni=${dtRetornoIni}&dtRetornoFim=${dtRetornoFim}`);
+  }
+
   findAll(): Observable<any> {
     return this.http.get(`${this.urlbase}`);
   }

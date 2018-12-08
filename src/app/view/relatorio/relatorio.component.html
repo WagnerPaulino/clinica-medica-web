@@ -1,0 +1,69 @@
+<section>
+  <mat-accordion *ngIf="loginService.isProprietario() || loginService.isMedico() || loginService.isRecepcionista()">
+    <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Quantidade de Consultas para os Proximos dias
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <mat-list>
+        <h3 mat-subheader>Consultas</h3>
+        <ngx-charts-bar-vertical
+          [view]="[width - 100, 200]"
+          [scheme]="colorScheme"
+          [results]="countConsultaProximosDias"
+          [gradient]="gradient"
+          [xAxis]="showXAxis"
+          [yAxis]="showYAxis"
+          [legend]="showLegend"
+          [showXAxisLabel]="showXAxisLabel"
+          [showYAxisLabel]="showYAxisLabel"
+          [xAxisLabel]="xAxisLabel"
+          [yAxisLabel]="yAxisLabel">
+        </ngx-charts-bar-vertical>
+      </mat-list>
+    </mat-expansion-panel>
+  </mat-accordion>
+  <mat-accordion *ngIf="loginService.isProprietario() || loginService.isMedico() || loginService.isRecepcionista()">
+    <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Procurar Consultar pelo periodo
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <form [formGroup]="formulario" (ngSubmit)="onSubmit()" style="width: 100%;">
+          <mat-form-field>
+            <input matInput placeholder="Inicio do Periodo" formControlName="dtConsultaIni">
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput placeholder="Fim do Periodo" formControlName="dtConsultaFim">
+          </mat-form-field>
+          <button mat-raised-button type="submit">Pesquisar</button>
+          <table mat-table [dataSource]="consultas" style="width: 100%;">
+              <ng-container matColumnDef="Data Consulta">
+                <th mat-header-cell *matHeaderCellDef> Data Consulta </th>
+                <td mat-cell *matCellDef="let element"> {{element.dtConsulta}} </td>
+              </ng-container>
+              <ng-container matColumnDef="Data Retorno">
+                <th mat-header-cell *matHeaderCellDef> Data Retorno </th>
+                <td mat-cell *matCellDef="let element"> {{element.dtRetorno}} </td>
+              </ng-container>
+              <ng-container matColumnDef="Tratamento">
+                <th mat-header-cell *matHeaderCellDef> Tratamento </th>
+                <td mat-cell *matCellDef="let element"> {{element.tratamento}} </td>
+              </ng-container>
+              <ng-container matColumnDef="Exame">
+                <th mat-header-cell *matHeaderCellDef> Exame </th>
+                <td mat-cell *matCellDef="let element"> {{element.exame}} </td>
+              </ng-container>
+              <ng-container matColumnDef="Sintomas">
+                <th mat-header-cell *matHeaderCellDef> Sintomas </th>
+                <td mat-cell *matCellDef="let element"> {{element.sintomas}} </td>
+              </ng-container>
+              <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+              <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+      </form>
+    </mat-expansion-panel>
+  </mat-accordion>
+</section>

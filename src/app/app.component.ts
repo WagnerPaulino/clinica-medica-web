@@ -18,7 +18,7 @@ export class AppComponent {
 
   @HostListener('window:resize')
   onResize() {
-    if (window.innerWidth < 680) {
+    if (window.innerWidth < 770) {
       return false;
     } else {
       return true;

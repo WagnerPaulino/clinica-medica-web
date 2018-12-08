@@ -13,12 +13,14 @@ import { LoaderComponent } from './view/loader/loader.component';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { LoaderInterceptorService } from './services/interceptors/loader-interceptor.service';
 import { LoginComponent } from './view/login/login.component';
+import { RelatorioComponent } from './view/relatorio/relatorio.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoaderComponent,
-    LoginComponent
+    LoginComponent,
+    RelatorioComponent
   ],
   imports: [
     BrowserModule,

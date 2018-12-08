@@ -32,32 +32,5 @@
             </mat-list>
           </mat-expansion-panel>
         </mat-accordion>
-        <div *ngIf="loginService.isProprietario()">
-          <mat-accordion>
-            <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
-              <mat-expansion-panel-header>
-                <mat-panel-title>
-                  Quantidade de Consultas para os Proximos dias
-                </mat-panel-title>
-              </mat-expansion-panel-header>
-              <mat-list>
-                <h3 mat-subheader>Consultas</h3>
-                <ngx-charts-bar-vertical
-                  [view]="[width - 100, 200]"
-                  [scheme]="colorScheme"
-                  [results]="countConsultaProximosDias"
-                  [gradient]="gradient"
-                  [xAxis]="showXAxis"
-                  [yAxis]="showYAxis"
-                  [legend]="showLegend"
-                  [showXAxisLabel]="showXAxisLabel"
-                  [showYAxisLabel]="showYAxisLabel"
-                  [xAxisLabel]="xAxisLabel"
-                  [yAxisLabel]="yAxisLabel">
-                </ngx-charts-bar-vertical>
-              </mat-list>
-            </mat-expansion-panel>
-          </mat-accordion>
-        </div>
     </div>
 </section>

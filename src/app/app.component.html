@@ -7,6 +7,7 @@
             <button *ngIf="loginService.isMedico() || loginService.isRecepcionista() || loginService.isProprietario()" routerLinkActive="actived" [routerLinkActiveOptions]="{exact: false}" mat-raised-button color="primary" routerLink="/paciente-list">Pacientes</button>
             <button *ngIf="loginService.isProprietario()" routerLinkActive="actived" [routerLinkActiveOptions]="{exact: false}" mat-raised-button color="primary" routerLink="/proprietario-list">Proprietarios</button>
             <button *ngIf="loginService.isProprietario()" routerLinkActive="actived" [routerLinkActiveOptions]="{exact: false}" mat-raised-button color="primary" routerLink="/recepcionista-list">Recepcionistas</button>
+            <button *ngIf="loginService.isLogged()" routerLinkActive="actived" [routerLinkActiveOptions]="{exact: false}" mat-raised-button color="primary" routerLink="/relatorio">Relatorios</button>
         </div>
         <div *ngIf="loginService.isLogged() && !onResize()" style="position: absolute; right: 0%;">
             <button  mat-button [matMenuTriggerFor]="menu">Opções</button>
@@ -16,6 +17,7 @@
                 <button *ngIf="loginService.isMedico() || loginService.isRecepcionista() || loginService.isProprietario()" routerLinkActive="actived" [routerLinkActiveOptions]="{exact: false}" mat-menu-item color="primary" routerLink="/paciente-list">Pacientes</button>
                 <button *ngIf="loginService.isProprietario()" routerLinkActive="actived" [routerLinkActiveOptions]="{exact: false}" mat-menu-item color="primary" routerLink="/proprietario-list">Proprietarios</button>
                 <button *ngIf="loginService.isProprietario()" routerLinkActive="actived" [routerLinkActiveOptions]="{exact: false}" mat-menu-item color="primary" routerLink="/recepcionista-list">Recepcionistas</button>
+                <button *ngIf="loginService.isLogged()" routerLinkActive="actived" [routerLinkActiveOptions]="{exact: false}" mat-menu-item color="primary" routerLink="/relatorio">Relatorios</button>
             </mat-menu>
         </div>
     </mat-toolbar-row>
