@@ -25,7 +25,8 @@ export class RelatorioComponent implements OnInit {
   public dtRetornoFim: any = '';
 
   //Tabela Periodo Consultas
-  displayedColumns: string[] = [/*'Nome Medico', 'Nome Paciente',*/ 'Data Consulta', 'Data Retorno', 'Tratamento', 'Exame', 'Sintomas'];
+  displayedColumns: string[] = [/*'Nome Medico', 'Nome Paciente',*/ 'Data Consulta', 'Data Retorno',
+  'Tratamento', 'Exame', 'Sintomas', 'Realizada'];
 
   //Grafico contador de consultas
   showXAxis = true;
