@@ -79,7 +79,7 @@
               <ng-container matColumnDef="expandedDetail">
                 <td mat-cell *matCellDef="let element" [attr.colspan]="displayedColumns.length">
                   <div class="element-detail"
-                       [@detailExpand]="element.id == consulta.id ? 'expanded' : 'collapsed'">
+                       [@detailExpand]="element.id == consulta.id ? 'expanded' : 'collapsed'" style="overflow: hidden;">
                        <app-consulta-edit (salvouConsulta)="atualizarTabela()" ></app-consulta-edit>
                     </div>
                 </td>
