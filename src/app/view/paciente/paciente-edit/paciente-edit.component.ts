@@ -1,3 +1,4 @@
+import { SharedService } from './../../../services/shared.service';
 import { Recepcionista } from './../../../domain/recepcionista';
 import { RecepcionistaService } from './../../../services/recepcionista.service';
 import { MedicoService } from './../../../services/medico.service';
@@ -24,7 +25,8 @@ export class PacienteEditComponent implements OnInit {
       private router: Router,
       private loginService: LoginService,
       private medicoService: MedicoService,
-      private recepcionistaService: RecepcionistaService) {
+      private recepcionistaService: RecepcionistaService,
+      private sharedService: SharedService) {
     this.route.queryParams.subscribe((params) => {
         this.id = params['id'];
         if (this.id) {
@@ -47,6 +49,25 @@ export class PacienteEditComponent implements OnInit {
     }
    }
   ngOnInit() {}
+
+  consultaCEP(cep, form) {
+    cep = cep.replace(/\D/g, '');
+      this.sharedService.consultaCEP(cep)
+        .subscribe((r) => {
+          this.popularDados(r, form);
+      });
+  }
+  popularDados(dados, form) {
+    form.form.patchValue({
+      rua: dados.logradouro,
+      cep: dados.cep,
+      complemento: dados.complemento,
+      bairro: dados.bairro,
+      cidade: dados.localidade,
+      estado: dados.uf
+    });
+  }
+
   salvar(f) {
     if (this.paciente.idPaciente) {
       this.pacienteService.alterar(this.paciente).subscribe((r) => {

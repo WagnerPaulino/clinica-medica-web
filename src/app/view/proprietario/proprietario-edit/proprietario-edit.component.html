@@ -36,7 +36,13 @@
       <input matInput placeholder="Bairro" [(ngModel)]="proprietario.bairro" name="bairro" #bairro="ngModel">
     </mat-form-field>
     <mat-form-field>
-      <input matInput placeholder="CEP" [(ngModel)]="proprietario.cep" name="cep" #cep="ngModel">
+      <input matInput placeholder="Rua" [(ngModel)]="proprietario.rua" name="rua" #rua="ngModel">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Estado" [(ngModel)]="proprietario.estado" name="estado" #estado="ngModel">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="CEP" (blur)="consultaCEP($event.target.value, f)" [(ngModel)]="proprietario.cep" name="cep" #cep="ngModel">
     </mat-form-field>
     <mat-form-field>
       <input matInput placeholder="Usuario" [(ngModel)]="proprietario.login.usuario" name="usuario" #usuario="ngModel" required>

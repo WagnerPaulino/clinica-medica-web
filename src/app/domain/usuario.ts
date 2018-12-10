@@ -12,5 +12,7 @@ export class Usuario {
     cidade: String;
     bairro: String;
     cep: String;
+    rua: String;
+    estado: String;
     login: Login = new Login();
 }

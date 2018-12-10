@@ -1,3 +1,4 @@
+import { SharedService } from './../../../services/shared.service';
 import { LoginService } from './../../../services/login.service';
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { RecepcionistaService } from '../../../services/recepcionista.service';
@@ -21,7 +22,8 @@ export class RecepcionistaEditComponent implements OnInit {
       private route: ActivatedRoute,
       private router: Router,
       private loginService: LoginService,
-      private proprietarioService: ProprietarioService) {
+      private proprietarioService: ProprietarioService,
+      private sharedService: SharedService) {
     this.route.queryParams.subscribe((params) => {
         this.id = params['id'];
         if (this.id) {
@@ -39,6 +41,25 @@ export class RecepcionistaEditComponent implements OnInit {
     }
    }
   ngOnInit() {}
+
+  consultaCEP(cep, form) {
+    cep = cep.replace(/\D/g, '');
+      this.sharedService.consultaCEP(cep)
+        .subscribe((r) => {
+          this.popularDados(r, form);
+      });
+  }
+  popularDados(dados, form) {
+    form.form.patchValue({
+      rua: dados.logradouro,
+      cep: dados.cep,
+      complemento: dados.complemento,
+      bairro: dados.bairro,
+      cidade: dados.localidade,
+      estado: dados.uf
+    });
+  }
+
   salvar(f) {
     if (this.recepcionista.id) {
       this.recepcionistaService.alterar(this.recepcionista).subscribe((r) => {

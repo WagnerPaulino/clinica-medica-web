@@ -1,3 +1,4 @@
+import { SharedService } from './../../../services/shared.service';
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { ProprietarioService } from '../../../services/proprietario.service';
 import { Proprietario } from '../../../domain/proprietario';
@@ -17,7 +18,8 @@ export class ProprietarioEditComponent implements OnInit {
 
   constructor(private proprietarioService: ProprietarioService,
       private route: ActivatedRoute,
-      private router: Router) {
+      private router: Router,
+      private sharedService: SharedService) {
     this.route.queryParams.subscribe((params) => {
         this.id = params['id'];
         if (this.id) {
@@ -30,6 +32,25 @@ export class ProprietarioEditComponent implements OnInit {
     });
    }
   ngOnInit() {}
+
+  consultaCEP(cep, form) {
+    cep = cep.replace(/\D/g, '');
+      this.sharedService.consultaCEP(cep)
+        .subscribe((r) => {
+          this.popularDados(r, form);
+      });
+  }
+  popularDados(dados, form) {
+    form.form.patchValue({
+      rua: dados.logradouro,
+      cep: dados.cep,
+      complemento: dados.complemento,
+      bairro: dados.bairro,
+      cidade: dados.localidade,
+      estado: dados.uf
+    });
+  }
+
   salvar(f) {
     if (this.proprietario.id) {
       this.proprietarioService.alterar(this.proprietario).subscribe((r) => {
