@@ -5,14 +5,26 @@ body { margin: 0; font-family: 'Roboto', sans-serif; }
 
 
 .container-form {
-    columns: 4;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-gap: 2%;
 }
 .max-button {
     width: 100%;
 }
 
+.button-container{
+    grid-column: 2/3;
+}
+
 @media only screen and (max-width: 770px) {
     .container-form {
         display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr;
+    }
+    .button-container{
+        grid-column: 1/1;
     }
 }

@@ -1,10 +1,10 @@
 <form (ngSubmit)="salvar(f)" #f="ngForm">
   <a *ngIf="consulta.id" mat-raised-button (click)="gerarRelatorio()" color="primary">Gerar Prontuario</a>
+  <mat-slide-toggle [(ngModel)]="consulta.realizada"
+      [checked]="consulta.realizada || false" name="realizada">
+      Consulta Realizada?
+  </mat-slide-toggle>
   <div class="container-form">
-    <mat-slide-toggle [(ngModel)]="consulta.realizada"
-        [checked]="consulta.realizada || false" name="realizada">
-        Consulta Realizada?
-    </mat-slide-toggle>
     <mat-form-field class="full-width">
       <mat-select placeholder="Medico" [(ngModel)]="consulta.medico" name="medico" #medico="ngModel" required>
           <mat-option [value]="null">
@@ -72,7 +72,9 @@
     <mat-form-field>
         <input matInput placeholder="Valor da Consulta" [(ngModel)]="consulta.valorConsulta" name="valorConsulta" #valorConsulta="ngModel">
     </mat-form-field>
+    <div class="button-container">
+      <button class="max-button" mat-raised-button type="submit" color="primary" [disabled]="!f.valid">Salvar</button>
+      <button class="max-button" *ngIf="consulta.id" mat-raised-button type="button" (click)="excluir()" color="primary">Excluir</button>
+    </div>
   </div>
-  <button class="max-button" mat-raised-button type="submit" color="primary" [disabled]="!f.valid">Salvar</button>
-  <button class="max-button" *ngIf="consulta.id" mat-raised-button type="button" (click)="excluir()" color="primary">Excluir</button>
 </form>
