@@ -4,3 +4,14 @@
     grid-template-columns: 1fr;
     height: 90vh;
 }
+
+tr.element-row:not(.expanded-row):hover {
+    background: #f5f5f5;
+  }
+  
+tr.element-row:not(.expanded-row):active {
+  background: #efefef;
+}
+tr.detail-row {
+  height: 0;
+}

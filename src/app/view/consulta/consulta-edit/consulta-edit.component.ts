@@ -65,7 +65,6 @@ export class ConsultaEditComponent implements OnInit {
   salvar(f) {
     if (this.consulta.id) {
       this.consultaService.alterar(this.consulta).subscribe((r) => {
-        this.router.navigateByUrl('/consulta-list');
         this.idConsulta = '';
         f.form.reset();
         this.consulta = new Consulta();
@@ -73,7 +72,6 @@ export class ConsultaEditComponent implements OnInit {
       });
     } else {
       this.consultaService.inserir(this.consulta).subscribe((r) => {
-        this.router.navigateByUrl('/consulta-list');
         this.idConsulta = '';
         f.form.reset();
         this.consulta = new Consulta();
@@ -85,7 +83,6 @@ export class ConsultaEditComponent implements OnInit {
     this.consultaService.deletar(this.consulta).subscribe((r) => {
       this.consulta = new Consulta();
       this.salvouConsulta.emit();
-      this.router.navigateByUrl('/consulta-list');
     });
   }
 

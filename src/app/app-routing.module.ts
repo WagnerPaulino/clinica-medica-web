@@ -1,3 +1,4 @@
+import { ConsultaEditComponent } from './view/consulta/consulta-edit/consulta-edit.component';
 import { DashboardComponent } from './view/dashboard/dashboard.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
@@ -12,6 +13,8 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent, data: {animation: 'HomePage'}},
   {path: 'relatorio', component: RelatorioComponent, canActivate: [
     LoginGuard
+  ], children: [
+    { path: 'edit', component: ConsultaEditComponent}
   ]},
 ];
 

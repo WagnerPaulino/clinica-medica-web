@@ -14,6 +14,9 @@ import { ConsultaEditComponent } from './consulta-edit/consulta-edit.component';
   declarations: [
     ConsultaListComponent,
     ConsultaEditComponent
+  ],
+  exports: [
+    ConsultaEditComponent
   ]
 })
 export class ConsultaModule { }
