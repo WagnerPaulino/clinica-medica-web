@@ -23,6 +23,7 @@ body { margin: 0; font-family: 'Roboto', sans-serif; }
         display: grid;
         grid-template-columns: 1fr;
         grid-template-rows: 1fr;
+        grid-gap: 0%;
     }
     .button-container{
         grid-column: 1/1;
